@@ -1,57 +1,44 @@
-import { StatusBar } from "expo-status-bar";
+
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,  
+  SafeAreaView,  
+  StatusBar
+} from "react-native";
+const marTop = StatusBar.currentHeight;
 
 export default function App() {
-  const [uuid, setUuid] = useState("0");
+  console.log(marTop);
   return (
-    <View style={styles.container}>
-      {uuid === "2" && (
-        <TouchableOpacity
-          onPress={() => {
-            setUuid("0");
-          }}
-        >
-          <Text style={{ color: "#fff", fontSize: 20 }}>
-            Booted on to Main Thread: tap to turn off!
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={{ backgroundColor: "cyan", paddingLeft: 8 }}>
+          <Text
+            style={{
+              color: "red",
+              fontSize: 20,
+              backgroundColor: "cyan",
+              padding: 5,
+            }}
+          >
+            Search
           </Text>
-        </TouchableOpacity>
-      )}
-
-      {uuid === "1" && (
-        <TouchableOpacity
-          onPress={() => {
-            setUuid("2");
-          }}
-        >
-          <Text style={{ color: "#fff", fontSize: 20 }}>
-            Boot success: tap to open Main Thread !
+        </View>
+        <View style={{ backgroundColor: "grey", flex: 1, paddingLeft: 8 }}>
+          <Text style={{ color: "#fff", fontSize: 20, padding: 5 }}>
+            Booted on to Main Thread!
           </Text>
-        </TouchableOpacity>
-      )}
-
-      {uuid === "0" && (
-        <TouchableOpacity
-          onPress={() => {
-            setUuid("1");
-          }}
-        >
-          <Text style={{ color: "#fff", fontSize: 20 }}>
-            Subject turned off: tap to boot again !
-          </Text>
-        </TouchableOpacity>
-      )}
-
-      <StatusBar style="auto" />
-    </View>
+        </View>
+      </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop: marTop,
   },
 });
