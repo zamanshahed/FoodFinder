@@ -1,0 +1,10 @@
+{
+    "extends":"@react-native-community",
+    "rules":{
+        "qoutes":[2, "duble", {"avoidEscape":true}]
+    },
+    "plugins": [
+      "react",
+      "react-native"
+    ]
+  }
