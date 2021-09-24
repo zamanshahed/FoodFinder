@@ -4,9 +4,9 @@ import { useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 //   Comfortaa_400Regular,
 //   Aldrich_400Regular,
 export const fonts = {
-  body: "Aldrich_400Regular",
-  heading: "BellotaText_700Bold",
-  monospace: "Aldrich_400Regular",
+  body: "Comfortaa_400Regular",
+  heading: "Aldrich_400Regular",
+  monospace: "BellotaText_700Bold",
 };
 
 export const fontWeights = {
