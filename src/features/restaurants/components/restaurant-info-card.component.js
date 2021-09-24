@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Card, Title } from "react-native-paper";
-import styled from "styled-components";
+import { theme } from "../../../infrustructure/theme";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -20,7 +20,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
       <Card elevation={5}>
         <Card.Cover key={name} source={{ uri: photo[0] }} />
         <Card.Content>
-          <Title>{name}</Title>
+          <Title style={styles.TitleStyle}>{name}</Title>
           <Text>Rating: {rating}/5 </Text>
         </Card.Content>
       </Card>
@@ -31,5 +31,8 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     padding: 11,
+  },
+  TitleStyle: {
+    fontFamily: theme.fonts.body,
   },
 });
