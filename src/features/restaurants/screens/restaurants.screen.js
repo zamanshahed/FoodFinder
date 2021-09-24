@@ -9,14 +9,15 @@ import {
 } from "react-native";
 
 import { Searchbar } from "react-native-paper";
-import { RestaurantInfo } from "../components/restaurant-info.component";
+import { RestaurantInfo } from "../components/restaurant-info-card.component";
+import { theme } from "../../../infrustructure/theme";
 
 const marTop = StatusBar.currentHeight;
 const isAndroid = Platform.OS === "android";
 
 export const RestaurantsScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.mainScreen}>
       <View style={styles.SearchbarContainer}>
         <Searchbar />
       </View>
@@ -28,16 +29,16 @@ export const RestaurantsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  mainScreen: {
     flex: 1,
     marginTop: isAndroid ? marTop : 0,
-    backgroundColor: "#f7f1e3",
+    backgroundColor: theme.colors.bg.secondary,
   },
   SearchbarContainer: {
-    padding: 15,
+    padding: theme.sizes.one,
   },
   ListContainer: {
     flex: 1,
-    paddingLeft: 8,
+    padding: theme.sizes.one,
   },
 });

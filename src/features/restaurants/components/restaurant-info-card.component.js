@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Card, Title } from "react-native-paper";
+import styled from "styled-components";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
