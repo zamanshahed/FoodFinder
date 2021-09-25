@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
+import Icon from "react-native-vector-icons/AntDesign";
+
 import { theme } from "../../../infrustructure/theme";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
@@ -11,9 +13,9 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
       "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&q=80",
     ],
     address = "99, random, street, of the Country",
-    isOpenNow = false,
+    isOpenNow = true,
     rating = 3.2,
-    isClosedTemporarily = true,
+    isClosedTemporarily = false,
   } = restaurant;
 
   const RatingArray = Array.from(new Array(Math.floor(rating)));
@@ -26,19 +28,45 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
         <Card.Content>
           <Title style={styles.TitleStyle}>{name}</Title>
           <View style={styles.ratingContainer}>
-            <Text style={styles.ratingStyle}>({rating})</Text>
             {RatingArray.map(() => (
-              <Text key={Math.random(1)} style={styles.ratingStyle}>
-                X
-              </Text>
+              <Icon
+                name="star"
+                color={theme.colors.ui.tertiary}
+                key={Math.random(1)}
+                size={22}
+              />
             ))}
             {NonRatingArray.map(() => (
-              <Text key={Math.random(1)} style={styles.ratingStyle}>
-                _
-              </Text>
+              <Icon
+                name="staro"
+                key={Math.random(1)}
+                color={theme.colors.ui.secondary}
+                size={22}
+              />
             ))}
+
+            <View style={styles.closedStyles}>
+              {isOpenNow && (
+                <Image
+                  style={styles.imageStyle}
+                  source={require("../../../../assets/open.png")}
+                />
+              )}
+              {isClosedTemporarily && !isOpenNow && (
+                <Image
+                  style={styles.tempImageStyle}
+                  source={require("../../../../assets/tempTime.png")}
+                />
+              )}
+              {!isOpenNow && (
+                <Image
+                  style={styles.imageStyle}
+                  source={require("../../../../assets/closed.png")}
+                />
+              )}
+            </View>
           </View>
-          <Paragraph>{address}</Paragraph>
+          <Paragraph style={styles.addressStyle}>{address}</Paragraph>
         </Card.Content>
       </Card>
     </View>
@@ -54,9 +82,27 @@ const styles = StyleSheet.create({
   },
   ratingContainer: {
     flexDirection: "row",
+    alignItems: "center",
   },
   ratingStyle: {
-    paddingRight: theme.sizes.two,
+    paddingRight: theme.sizes.one,
     fontFamily: theme.fonts.heading,
+  },
+  addressStyle: {
+    color: theme.colors.ui.secondary,
+  },
+  imageStyle: {
+    width: 30,
+    height: 30,
+  },
+  tempImageStyle: {
+    width: 25,
+    height: 25,
+    marginRight: 10,
+  },
+  closedStyles: {
+    flexDirection: "row",
+    marginLeft: "35%",
+    alignItems: "center",
   },
 });
