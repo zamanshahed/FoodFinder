@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   StatusBar,
   Platform,
+  FlatList,
 } from "react-native";
 
 import { Searchbar } from "react-native-paper";
@@ -22,7 +23,20 @@ export const RestaurantsScreen = () => {
         <Searchbar />
       </View>
       <View style={styles.ListContainer}>
-        <RestaurantInfo />
+        <FlatList
+          data={[
+            { name: 1 },
+            { name: 2 },
+            { name: 3 },
+            { name: 4 },
+            { name: 5 },
+            { name: 6 },
+            { name: 7 },
+          ]}
+          renderItem={() => <RestaurantInfo />}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={{ padding: 5 }}
+        />
       </View>
     </SafeAreaView>
   );
