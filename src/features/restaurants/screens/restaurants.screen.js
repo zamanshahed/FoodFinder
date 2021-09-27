@@ -35,7 +35,7 @@ export const RestaurantsScreen = () => {
           ]}
           renderItem={() => <RestaurantInfo />}
           keyExtractor={(item) => item.name}
-          contentContainerStyle={{ padding: 5 }}
+          // contentContainerStyle={{ padding: 5 }}
         />
       </View>
     </SafeAreaView>
@@ -49,10 +49,11 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.bg.secondary,
   },
   SearchbarContainer: {
+    // paddingHorizontal: theme.sizes.one,
     padding: theme.sizes.one,
   },
   ListContainer: {
     flex: 1,
-    padding: theme.sizes.one,
+    // padding: theme.sizes.one,
   },
 });
