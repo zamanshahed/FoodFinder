@@ -8,25 +8,69 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
+import TabIcon from "react-native-vector-icons/Ionicons";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { Text } from "react-native";
+import { theme } from "./src/infrustructure/theme";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Settings = () => {
-  return <Text>Settings Screen !</Text>;
+  return (
+    <SafeAreaView>
+      <Text>Settings Screen !</Text>
+    </SafeAreaView>
+  );
 };
 const Maps = () => {
-  return <Text>Maps Here !</Text>;
+  return (
+    <SafeAreaView>
+      <Text>Maps Here !</Text>
+    </SafeAreaView>
+  );
 };
 
 const Tab = createBottomTabNavigator();
 
 function MainBottomTab() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-      <Tab.Screen name="Maps" component={Maps} />
-      <Tab.Screen name="Settings" component={Settings} />
+    <Tab.Navigator
+      initialRouteName="Feed"
+      screenOptions={{
+        tabBarActiveTintColor: theme.colors.ui.success,
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="Feed"
+        component={RestaurantsScreen}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Maps"
+        component={Maps}
+        options={{
+          tabBarLabel: "Maps",
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon name="map-sharp" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarLabel: "Settings",
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon name="settings-sharp" size={size} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
