@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -7,15 +7,18 @@ import {
   Platform,
   FlatList,
 } from "react-native";
-
 import { Searchbar } from "react-native-paper";
+
 import { RestaurantInfo } from "../components/restaurant-info-card.component";
 import { theme } from "../../../infrustructure/theme";
+import { RestaurantContext } from "../../services/restaurants/restaurants.context";
 
 const marTop = StatusBar.currentHeight;
 const isAndroid = Platform.OS === "android";
 
 export const RestaurantsScreen = () => {
+  const restaurantContext = useContext(RestaurantContext);
+  console.log(restaurantContext);
   return (
     <SafeAreaView style={styles.mainScreen}>
       <View style={styles.SearchbarContainer}>
@@ -23,15 +26,7 @@ export const RestaurantsScreen = () => {
       </View>
       <View style={styles.ListContainer}>
         <FlatList
-          data={[
-            { name: 1 },
-            { name: 2 },
-            { name: 3 },
-            { name: 4 },
-            { name: 5 },
-            { name: 6 },
-            { name: 7 },
-          ]}
+          data={restaurantContext.restaurants}
           renderItem={() => <RestaurantInfo />}
           keyExtractor={(item) => item.name}
           // contentContainerStyle={{ padding: 5 }}

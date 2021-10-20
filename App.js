@@ -11,10 +11,11 @@ import AppLoading from "expo-app-loading";
 import TabIcon from "react-native-vector-icons/Ionicons";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+import { RestaurantContextProvider } from "./src/features/services/restaurants/restaurants.context";
+
 import { Text } from "react-native";
 import { theme } from "./src/infrustructure/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { RestaurantRequest } from "./src/features/services/restaurants/restaurants.services";
 
 const Settings = () => {
   return (
@@ -89,9 +90,11 @@ export default function App() {
     return (
       <>
         {/* <RestaurantsScreen /> */}
-        <NavigationContainer>
-          <MainBottomTab />
-        </NavigationContainer>
+        <RestaurantContextProvider>
+          <NavigationContainer>
+            <MainBottomTab />
+          </NavigationContainer>
+        </RestaurantContextProvider>
       </>
     );
   }
