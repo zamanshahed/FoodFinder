@@ -14,6 +14,7 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { Text } from "react-native";
 import { theme } from "./src/infrustructure/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { RestaurantRequest } from "./src/features/services/restaurants/restaurants.services";
 
 const Settings = () => {
   return (
