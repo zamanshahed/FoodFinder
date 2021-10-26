@@ -47,9 +47,9 @@ function MainBottomTab() {
         name="Feed"
         component={RestaurantsScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Restaurants",
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="home" size={size} color={color} />
+            <TabIcon name="restaurant" size={size} color={color} />
           ),
         }}
       />
