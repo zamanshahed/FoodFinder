@@ -18,10 +18,9 @@ const marTop = StatusBar.currentHeight;
 const isAndroid = Platform.OS === "android";
 
 export const RestaurantsScreen = () => {
-  const { restaurants, isLoading2, errorCaught } =
-    useContext(RestaurantContext);
+  const { restaurants, isLoading, errorCaught } = useContext(RestaurantContext);
   // console.log(restaurantContext);
-  const isLoading = true;
+
   return (
     <SafeAreaView style={styles.mainScreen}>
       {isLoading && (

@@ -12,6 +12,7 @@ import TabIcon from "react-native-vector-icons/Ionicons";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { RestaurantContextProvider } from "./src/features/services/restaurants/restaurants.context";
+import { MapScreen } from "./src/features/restaurants/screens/maps.screen";
 
 import { Text } from "react-native";
 import { theme } from "./src/infrustructure/theme";
@@ -24,13 +25,13 @@ const Settings = () => {
     </SafeAreaView>
   );
 };
-const Maps = () => {
-  return (
-    <SafeAreaView>
-      <Text>Maps Here !</Text>
-    </SafeAreaView>
-  );
-};
+// const Maps = () => {
+//   return (
+//     <SafeAreaView>
+//       <Text>Maps Here !</Text>
+//     </SafeAreaView>
+//   );
+// };
 
 const Tab = createBottomTabNavigator();
 
@@ -54,8 +55,8 @@ function MainBottomTab() {
         }}
       />
       <Tab.Screen
-        name="Maps"
-        component={Maps}
+        name="Map"
+        component={MapScreen}
         options={{
           tabBarLabel: "Maps",
           tabBarIcon: ({ color, size }) => (
