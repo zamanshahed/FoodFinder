@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const MapScreen = () => {
+export const Settings = () => {
   const [myLocation, setMyLocation] = useState(null);
   const [locErr, setErr] = useState(null);
 
@@ -41,34 +41,23 @@ export const MapScreen = () => {
   }, []);
 
   let locationDisplay = "waiting...";
-  let locationLat = 23.762906;
-  let locationLong = 90.3786772;
   if (locErr) {
     locationDisplay = locErr;
   } else if (myLocation) {
-    locationDisplay = JSON.stringify(myLocation);
-    locationLat = myLocation.coords.latitude;
-    locationLong = myLocation.coords.longitude;
+    locationDisplay = JSON.stringify(myLocation.coords.latitude);
   }
 
   const [pin, setPin] = useState({
-    latitude: locationLat,
-    longitude: locationLong,
+    latitude: 23.762906,
+    longitude: 90.3786772,
   });
-
-  useEffect(() => {
-    setPin({
-      latitude: locationLat,
-      longitude: locationLong,
-    });
-  }, [locationLat, locationLong]);
 
   return (
     <View
       // style={styles.container}
       style={{ marginTop: 50, flex: 1 }}
     >
-      {/* <View
+      <View
         style={{
           alignItems: "center",
         }}
@@ -76,47 +65,16 @@ export const MapScreen = () => {
         <Text
           style={{
             paddingTop: 35,
-            fontSize: 18,
+            fontSize: 23,
             color: "red",
             textAlign: "center",
             marginBottom: 134,
           }}
         >
-          Location Display: {locationDisplay}
+          latitude: {myLocation.coords.latitude} ; longitude:
+          {myLocation.coords.longitude}
         </Text>
-      </View> */}
-      <MapView
-        // android will show google map by default
-        provider={PROVIDER_GOOGLE} // remove PROVIDER_GOOGLE import if not using Google Maps
-        style={styles.map}
-        region={{
-          latitude: pin.latitude,
-          longitude: pin.longitude,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
-      >
-        {/* everything that is inside map_view HERE */}
-        <Marker
-          coordinate={pin}
-          draggable={true}
-          onDragStart={(e) => {
-            console.log("Drag recorded! ", e.nativeEvent.coordinate);
-          }}
-          onDragEnd={(e) => {
-            setPin({
-              latitude: e.nativeEvent.coordinate.latitude,
-              longitude: e.nativeEvent.coordinate.longitude,
-            });
-          }}
-        >
-          <Callout>
-            <Text>This is a pin msg text !</Text>
-          </Callout>
-        </Marker>
-
-        <Circle center={pin} radius={300} />
-      </MapView>
+      </View>
     </View>
   );
 };

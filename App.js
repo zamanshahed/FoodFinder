@@ -13,18 +13,20 @@ import TabIcon from "react-native-vector-icons/Ionicons";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { RestaurantContextProvider } from "./src/features/services/restaurants/restaurants.context";
 import { MapScreen } from "./src/features/restaurants/screens/maps.screen";
+import { Settings } from "./src/features/restaurants/screens/settings.screen";
 
-import { Text } from "react-native";
+// import { LeafletMapScreen } from "./src/features/restaurants/screens/leaflet_maps.screen";
+// import { MapBoxScreen } from "./src/features/restaurants/screens/mapbox.screen";
+
 import { theme } from "./src/infrustructure/theme";
-import { SafeAreaView } from "react-native-safe-area-context";
 
-const Settings = () => {
-  return (
-    <SafeAreaView>
-      <Text>Settings Screen !</Text>
-    </SafeAreaView>
-  );
-};
+// const Settings = () => {
+//   return (
+//     <SafeAreaView>
+//       <Text>Settings Screen !</Text>
+//     </SafeAreaView>
+//   );
+// };
 // const Maps = () => {
 //   return (
 //     <SafeAreaView>
