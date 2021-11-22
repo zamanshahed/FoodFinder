@@ -41,16 +41,27 @@ export const Settings = () => {
   }, []);
 
   let locationDisplay = "waiting...";
+  let locationLat = 1;
+  let locationLong = 2;
   if (locErr) {
     locationDisplay = locErr;
   } else if (myLocation) {
-    locationDisplay = JSON.stringify(myLocation.coords.latitude);
+    locationDisplay = JSON.stringify(myLocation);
+    locationLat = myLocation.coords.latitude;
+    locationLong = myLocation.coords.longitude;
   }
 
   const [pin, setPin] = useState({
-    latitude: 23.762906,
-    longitude: 90.3786772,
+    latitude: locationLat,
+    longitude: locationLong,
   });
+
+  useEffect(() => {
+    setPin({
+      latitude: locationLat,
+      longitude: locationLong,
+    });
+  }, [locationLat, locationLong]);
 
   return (
     <View
@@ -71,8 +82,7 @@ export const Settings = () => {
             marginBottom: 134,
           }}
         >
-          latitude: {myLocation.coords.latitude} ; longitude:
-          {myLocation.coords.longitude}
+          latitude: {locationLat}, longitude: {locationLong}
         </Text>
       </View>
     </View>
